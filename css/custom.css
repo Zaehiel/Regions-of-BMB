@@ -1,0 +1,134 @@
+body.body{background: #0F0F1B url('http://lolstatic-a.akamaihd.net/site/bilgewater/1d0e96db6bd69523cf508365e1042f93171e3deb/img/landing-overlay-bg.jpg') no-repeat center center fixed; 
+		  -webkit-background-size: cover;
+		  -moz-background-size: cover;
+		  -o-background-size: cover;
+		  background-size: cover;
+			height:100%;;color:#E9E9E9;}
+h1,h2,h3,h4{font-family: 'Montserrat', sans-serif;}
+span{font-family: 'Open Sans', sans-serif;font-weight:400;}
+#h, .h{
+font-family: 'Montserrat', sans-serif;
+font-size:24px;
+}
+a:focus { outline:none !important }
+.border{
+	border-bottom: 1px solid #fff;
+}
+.container{
+min-width: 768px !important;
+}
+#t{
+font-family: 'Open Sans', sans-serif;font-weight:400;
+font-size:18px;
+}
+.t{
+font-family: 'Open Sans', sans-serif;font-weight:400;
+}
+#pageWrapper{margin-top:20px;}
+.navbar-inverse, .navbar, .navbar-static-top, .navbar-inner{
+	//background: rgba(255, 255, 255, 0.9);
+}
+.dataBox{
+margin-bottom: 17px;
+}
+.dataWrapper{
+background-color: rgba(0,0,0, 0.6);
+box-shadow: 0px 3px 9px rgba(0, 0, 0, 0.5);
+margin-bottom: 20px;
+}
+.center{
+text-align:center;
+}
+.chart-legend li span{
+display: inline-block;
+width: 12px;
+height: 12px;
+margin-right: 5px;
+}
+ul{
+list-style-type: none;
+}
+/*champions page specific*/
+ul.champSqHolder{
+list-style-type: none;
+padding:15px;
+}
+.mrg{
+margin: 10px 10px;
+}
+li.champSq img{
+width: 80px;
+float: left;
+margin: 5px;
+border: 1px solid rgba(255,255,255,0.1);
+-webkit-transition: box-shadow 0.5s ease;
+-moz-transition: box-shadow 0.5s ease;
+-o-transition: box-shadow 0.5s ease;
+-ms-transition: box-shadow 0.5s ease;
+transition: box-shadow 0.5s ease;
+}
+.sqBorder{
+border: 1px solid rgba(255,255,255,0.1);
+float:left;
+}
+li.champSq a img:hover {
+-webkit-box-shadow: 0px 0px 7px rgba(255,255,255,0.9);
+-moz-box-shadow: 0px 0px 7px rgba(255,255,255,0.9);
+-o-box-shadow: 0px 0px 7px rgba(255,255,255,0.9);
+box-shadow: 0px 0px 7px rgba(255,255,255,0.9);
+}
+li.champLoading img{
+float: left;
+margin: 5px;
+border: 1px solid rgba(0,0,0,0.1);
+}
+.table > tbody > tr > td{
+border-top: 0px solid #5A5A5A !important;
+}
+tr:nth-child(even) {
+    background-color: rgba(255,255,255,0.04);
+}
+tr:nth-child(odd) {
+    background-color: rgba(0,0,0,0.4);
+}
+.table td , .table th{
+text-align:center !important;
+}
+.table > thead > tr > th{
+border-bottom: 0px solid #5A5A5A !important;
+}
+.table > thead > tr{
+background-color: rgba(0,0,0,0) !important;
+}
+/*navbar styling*/
+.navbar-default{
+background-image: linear-gradient(to bottom, #2E2D46 0px, #161521 100%);
+border-color: #161521;
+box-shadow: 0px 3px 9px rgba(0, 0, 0, 0.5);
+}
+.navbar-default .navbar-nav > .active > a{
+background-image: linear-gradient(to bottom, #35324E 0px, #47446A 100%);
+background-repeat: repeat-x;
+box-shadow: 0px 3px 9px rgba(0, 0, 0, 0.075) inset;
+}
+.navbar-default .navbar-brand {
+    color: #BABABA;
+}
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+    color: #fff;
+    background-color: #E7E7E7;
+}
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+    color: #fff;
+    background-color: transparent;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #BABABA;
+}
+.table{
+	color: #BABABA;
+}

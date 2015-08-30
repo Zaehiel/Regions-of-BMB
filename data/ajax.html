@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en"> 
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Request the api data from php and use the clients resources to work with the arrays">
+    <meta name="author" content="EHco.planet.ee">
+	<link href="favicon.ico" type="image/x-icon" rel="icon" /><link href="favicon.ico" type="image/x-icon" rel="shortcut icon" />
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<title>Ajax to API</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+	<style type="text/css">
+	
+	</style>
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+	 
+<body class="b">
+
+
+
+		<div class="container">
+			<div class="col-lg-1"></div>
+			<div class="col-lg-8 col-xs-12 noPad">
+				<div class="col-lg-6">
+					<div id="buttonHolder" class="row">
+						<button class="btn btn-default" onclick="fetch();">Start fetching regions</button>
+					</div>
+					<div id="progressBar" class="row">
+						<span id="progressContent"> NULL</span>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div id="buttonHolder" class="row">
+						<button class="btn btn-default" onclick="fetch2();">Start champ fetch</button>
+					</div>
+					<div id="progressBar" class="row">
+						<span id="progressContent2"> NULL</span>
+					</div>
+				</div>
+				
+			</div>
+			<div class="col-lg-3"></div>
+		</div>
+
+		
+	
+
+<script>
+	var json_region, json_champions, count = 0, count2 =0, fails = 0, currentMatch, looping, looping2, printonce=0;
+	
+	function _(input) {
+		return document.getElementById(input);
+	}
+	
+	function fetch() {
+		looping = setInterval(apiCall, 3151);
+	}
+	
+	function fetch2() {
+		looping2 = setInterval(apiCall2, 5651);
+	}
+	
+	
+	
+	function apiCall(){
+		if(count < json_region.length){
+			console.log(count);
+			currentMatch = json_region[count];
+			console.log(currentMatch);
+			var r = new XMLHttpRequest(); 
+			r.open("GET", "ajax.php?q="+currentMatch, true);
+			r.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8;");
+			r.onreadystatechange = function () {
+				if (r.readyState != 4 || r.status != 200) return; 
+				var txt = r.responseText;
+				console.log(txt);
+				if(txt == "done"){count++; _('progressContent').textContent = count+"/"+json_region.length+" fails:"+fails;} 
+				else if(txt != "done"){fails++;_('progressContent').textContent = count+"/"+json_region.length+" retrying current.";}
+			};
+			r.send();
+		} else {
+			looping2 = clearInterval(apiCall2);
+			print2();
+		}
+	}
+	
+	function apiCall2(){
+		if(count2 < json_champions.length){
+			console.log(count2);
+			currentMatch = json_champions[count2]['champId'];
+			console.log(currentMatch);
+			var r = new XMLHttpRequest(); 
+			r.open("GET", "champs.php?q="+currentMatch, true);
+			r.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8;");
+			r.onreadystatechange = function () {
+				if (r.readyState != 4 || r.status != 200) return; 
+				var txt = r.responseText;
+				console.log(txt);
+				if(txt == "done"){count2++; _('progressContent2').textContent = count2+"/"+json_champions.length+" fails:"+fails;} 
+				else if(txt != "done"){fails++;_('progressContent2').textContent = count2+"/"+json_champions.length+" retrying current.";}
+			};
+			r.send();
+		} else {
+			looping2 = clearInterval(apiCall2);
+			print2();
+		}
+	}
+	
+	function print() {
+		if(printonce < 1){
+		var x = new XMLHttpRequest(); 
+			x.open("GET", "ajax.php?w=true", true);
+			x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8;");
+			x.onreadystatechange = function () {
+				if (x.readyState != 4 || x.status != 200) return; 
+				console.log(x.responseText);
+			};
+			x.send();
+			printonce=1;
+		}
+	}
+	function print2() {
+		if(printonce < 1){
+		var x = new XMLHttpRequest(); 
+			x.open("GET", "champs.php?w=true", true);
+			x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8;");
+			x.onreadystatechange = function () {
+				if (x.readyState != 4 || x.status != 200) return; 
+				console.log(x.responseText);
+			};
+			x.send();
+			printonce=1;
+		}
+	}
+	/*Loads the match data json, either 'EUW_match,json', 'EUNE_match.json' or 'NA_match.json'*/
+		function loadJSON(callback) {   
+
+			var xobj = new XMLHttpRequest();
+			xobj.overrideMimeType("application/json");
+			xobj.open('GET', 'NA_match.json', true); 
+			xobj.onreadystatechange = function () {
+				  if (xobj.readyState == 4 && xobj.status == "200") {
+					callback(xobj.responseText);
+				  }
+			};
+			xobj.send(null);  
+		 }
+		 
+		 function loadJSON2(callback) {   
+
+			var xobj = new XMLHttpRequest();
+			xobj.overrideMimeType("application/json");
+			xobj.open('GET', 'euw.json', true); 
+			xobj.onreadystatechange = function () {
+				  if (xobj.readyState == 4 && xobj.status == "200") {
+					callback(xobj.responseText);
+				  }
+			};
+			xobj.send(null);  
+		 }
+		
+		function init() {
+			 loadJSON(function(response) {
+				json_region = JSON.parse(response);
+			 });
+		}
+		
+		function init2() {
+			 loadJSON2(function(response) {
+				json_champions = JSON.parse(response);
+			 });
+		}
+		
+			 
+ 
+		document.addEventListener('DOMContentLoaded', function() {
+			init();
+			init2();
+		});
+	</script>
+</body>
+
+</html>
