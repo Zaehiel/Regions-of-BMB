@@ -57,36 +57,36 @@ if($valid){
 		
 		$item .= '
 			<div class="col-xs-4">
-				<table class="table t col-xs-8">
-				<thead>
-				  <tr>
-					<th>'.strtoupper($regions[$z]).'</th>
-					<th>Bought</th>
-					<th>Winrate</th>
-				  </tr>
-				</thead>
-				<tbody>
+			  <table class="table t col-xs-8">
+			  <thead>
+			    <tr>
+			      <th>'.strtoupper($regions[$z]).'</th>
+			      <th>Bought</th>
+			      <th>Winrate</th>
+			     </tr>
+			   </thead>
+			   <tbody>
 			';
 		$c=0;
 		$k=0;
 		/*if contains basically all the boots/trinkets and anything else that's not a full complete item, it's not really nice looking, but I got no time wait and fetch items from the api and do it better T_T rip in pepperonis*/
 		while($c<10){
 			$name = $items['items'][$k]['name'];
-			if($name != 1054 && $name != 1056 && $name != 1055 && $name != 1324 && $name != 1319 && $name != 1329 && $name != 1316 && $name != 1334 && $name != 1309 && $name != 1321 && $name != 1334 && $name != 1304 
-				&& $name != 1324 && $name != 1053 && $name !=1038 && $name !=1037 && $name !=2003 && $name !=3086 && $name !=1042 && $name !=1018 && $name !=2004 
+			if($name != 1054 && $name != 1056 && $name !=1055 && $name !=1324 && $name !=1319 && $name != 1329 && $name != 1316 && $name != 1334 && $name != 1309  
+				&& $name !=1324 && $name !=1053 && $name !=1038 && $name !=1037 && $name !=2003 && $name !=3086 && $name !=1042 && $name !=1018 && $name !=2004 
 				&& $name !=1036 && $name !=3093 && $name !=1051 && $name !=1031 && $name !=3144 && $name !=1043 && $name !=1011 && $name !=1029 
-				&& $name !=3044 && $name !=3134 && $name !=3070 && $name !=3110 && $name !=2041 && $name !=3057 && $name !=1001 && $name !=1314 && $name !=1311 && $name !=1026 && $name !=1027 && $name !=1058&& $name !=1052
+				&& $name !=3044 && $name !=3134 && $name !=3070 && $name !=3110 && $name !=2041 && $name !=3057 && $name !=1001 && $name !=1314 && $name !=1311
+				&& $name !=1027 && $name !=1058 && $name !=1052 && $name !=1321 && $name !=1334 && $name !=1304 && $name !=1309 && $name !=1026
 				&& $name !=3136 && $name !=2044 && $name !=3340 && $name !=3361 && $name !=3362 && $name !=3342 && $name !=3341 && $name !=3364 && $name !=3363
-				&& $name !=3211
-				&& $name !=3111 && $name !=3047 && $name !=3009 && $name !=3117 && $name !=3158 && $name !=3006 && $name !=3020 && $name !=1300
+				&& $name !=3111 && $name !=3047 && $name !=3009 && $name !=3117 && $name !=3158 && $name !=3006 && $name !=3020 && $name !=1300 && $name !=3211
 				&& $name !=3097 && $name !=1028 && $name !=3303 && $name !=3097 && $name !=2045 && $name !=3113 && $name !=3067 && $name !=3155 && $name !=3077
 				&& $name !=3082 && $name !=3098 && $name !=2010 && $name !=3108 && $name !=3801 && $name !=3024 && $name !=3433 && $name !=2043 && $name !=1301
 				&& $name !=3085){
 				$item .= '
 				<tr>
-					<td><img src="http://ddragon.leagueoflegends.com/cdn/5.16.1/img/item/'.$name.'.png" alt="" style="width:30px;"></td>
-					<td>'.number_format(($items['items'][$k]['count']/$champion[$z]['played'])*100, 1) .' %</td>
-					<td>'.$items['items'][$k]['winrate'].' %</td>
+				  <td><img src="http://ddragon.leagueoflegends.com/cdn/5.16.1/img/item/'.$name.'.png" alt="" style="width:30px;"></td>
+				  <td>'.number_format(($items['items'][$k]['count']/$champion[$z]['played'])*100, 1) .' %</td>
+				  <td>'.$items['items'][$k]['winrate'].' %</td>
 				</tr>
 				';
 				$c++;
@@ -95,8 +95,8 @@ if($valid){
 		}
 
 		$item .= '
-			</tbody>
-			</table>
+		   </tbody>
+		  </table>
 		</div>';
 		
 	}
